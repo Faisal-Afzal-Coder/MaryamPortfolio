@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Send, MessageCircle } from "lucide-react";
 import { InstagramIcon, FacebookIcon, LinkedinIcon } from "./BrandIcons";
 
 export default function Contact() {
@@ -99,7 +99,7 @@ export default function Contact() {
           message: data.message || "Failed to send message. Please try again or message via WhatsApp.",
         });
       }
-    } catch (err) {
+    } catch {
       setFormStatus({
         type: "error",
         message: "Something went wrong while sending. Please try again or check your internet connection.",
@@ -166,7 +166,7 @@ export default function Contact() {
             Contact
           </h2>
           <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Let's Start Learning Together
+            Let&apos;s Start Learning Together
           </p>
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
             Reach out directly via WhatsApp, email, or by filling out the trial booking form.
@@ -260,12 +260,14 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  <label htmlFor="name" className="text-xs font-bold text-slate-500 dark:text-slate-400">
                     Your Name
                   </label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
+                    autoComplete="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g. Ayesha"
@@ -275,12 +277,14 @@ export default function Contact() {
 
                 {/* Email */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  <label htmlFor="email" className="text-xs font-bold text-slate-500 dark:text-slate-400">
                     Email Address
                   </label>
                   <input
-                    type="text"
+                    id="email"
+                    type="email"
                     name="email"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="e.g. ayesha@example.com"
@@ -291,10 +295,11 @@ export default function Contact() {
 
               {/* Subject */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                <label htmlFor="subject" className="text-xs font-bold text-slate-500 dark:text-slate-400">
                   Subject / Topic of Interest
                 </label>
                 <input
+                  id="subject"
                   type="text"
                   name="subject"
                   value={formData.subject}
@@ -306,10 +311,11 @@ export default function Contact() {
 
               {/* Message */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                <label htmlFor="message" className="text-xs font-bold text-slate-500 dark:text-slate-400">
                   Detailed Message / Board Requirements
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
@@ -320,19 +326,31 @@ export default function Contact() {
               </div>
 
               {formStatus.type === "loading" && (
-                <div className="text-xs font-bold text-blue-500 bg-blue-500/5 p-3.5 rounded-xl border border-blue-500/10">
+                <div
+                  className="text-xs font-bold text-blue-500 bg-blue-500/5 p-3.5 rounded-xl border border-blue-500/10"
+                  role="status"
+                  aria-live="polite"
+                >
                   ⏳ Sending your request... Please wait.
                 </div>
               )}
 
               {formStatus.type === "error" && (
-                <div className="text-xs font-bold text-rose-500 bg-rose-500/5 p-3.5 rounded-xl border border-rose-500/10">
+                <div
+                  className="text-xs font-bold text-rose-500 bg-rose-500/5 p-3.5 rounded-xl border border-rose-500/10"
+                  role="alert"
+                  aria-live="assertive"
+                >
                   ⚠️ {formStatus.message}
                 </div>
               )}
 
               {formStatus.type === "success" && (
-                <div className="text-xs font-bold text-emerald-500 bg-emerald-500/5 p-3.5 rounded-xl border border-emerald-500/10">
+                <div
+                  className="text-xs font-bold text-emerald-500 bg-emerald-500/5 p-3.5 rounded-xl border border-emerald-500/10"
+                  role="status"
+                  aria-live="polite"
+                >
                   🎉 {formStatus.message}
                 </div>
               )}

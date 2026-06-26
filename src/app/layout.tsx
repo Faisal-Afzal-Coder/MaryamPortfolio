@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Maryam Afzal | Professional Online Biology & Chemistry Tutor",
-  description: "Experienced online tutor specializing in Biology and Chemistry for O-Level, A-Level, IGCSE, and GCSE. Empowering students globally with conceptual clarity and academic excellence.",
+  metadataBase: new URL("https://maryamportfolio1234.vercel.app"),
+  title: {
+    default: "Maryam Afzal | Online Biology & Chemistry Tutor",
+    template: "%s | Maryam Afzal",
+  },
+  description:
+    "Experienced online tutor specializing in Biology and Chemistry for O-Level, A-Level, IGCSE, and GCSE students worldwide. Concept-focused lessons and exam readiness.",
   keywords: [
     "Maryam Afzal",
     "Biology Tutor",
@@ -29,15 +34,66 @@ export const metadata: Metadata = {
     "Biotechnology Tutor",
     "Online Science Classes",
     "UVAS Pakistan",
-    "Interactive Science Learning"
+    "Interactive Science Learning",
   ],
-  authors: [{ name: "Maryam Afzal" }],
+  authors: [{ name: "Maryam Afzal", url: "https://maryamportfolio1234.vercel.app" }],
+  creator: "Maryam Afzal",
+  publisher: "Maryam Afzal",
+  applicationName: "Maryam Afzal Portfolio",
+  category: "education",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Maryam Afzal | Professional Online Biology & Chemistry Tutor",
-    description: "Personalized online tutoring for O/A-Levels, IGCSE, and GCSE Biology & Chemistry. Helping students build strong conceptual foundations and achieve top grades.",
     type: "website",
     locale: "en_US",
+    url: "https://maryamportfolio1234.vercel.app",
+    siteName: "Maryam Afzal Portfolio",
+    title: "Maryam Afzal | Online Biology & Chemistry Tutor",
+    description:
+      "Personalized online tutoring for O/A-Levels, IGCSE, and GCSE Biology & Chemistry, helping students build strong conceptual foundations and achieve excellent grades.",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Maryam Afzal online biology and chemistry tutor",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Maryam Afzal | Online Biology & Chemistry Tutor",
+    description:
+      "Concept-based online tutoring for biology and chemistry with a strong focus on exam success and student confidence.",
+    images: ["/og-image.svg"],
+    creator: "@maryamafzal",
+  },
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#07111F" },
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+  ],
 };
 
 export default function RootLayout({
@@ -65,7 +121,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <div className="flex min-h-screen flex-col">{children}</div>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

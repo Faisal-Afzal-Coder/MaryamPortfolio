@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Star, Globe2, BookOpen, GraduationCap } from "lucide-react";
 
@@ -124,15 +125,15 @@ export default function Hero() {
               
               {/* Profile Image Space */}
               <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-brand p-1 shadow-2xl relative z-10 overflow-hidden group">
-                <div className="w-full h-full rounded-full bg-slate-100 dark:bg-slate-950 flex flex-col items-center justify-center p-4 text-center">
-                  <GraduationCap className="h-10 w-10 text-brand-emerald mb-1 animate-bounce" />
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400">
-                    Maryam Afzal
-                  </span>
-                  <span className="text-[8px] sm:text-[9px] text-slate-400">
-                    Online Tutor
-                  </span>
-                </div>
+                <Image
+                  src="/hero-portrait.svg"
+                  alt="Maryam Afzal teaching biology and chemistry online"
+                  width={160}
+                  height={160}
+                  priority
+                  sizes="(max-width: 640px) 128px, 160px"
+                  className="h-full w-full object-cover rounded-full"
+                />
               </div>
 
               {/* Orbiting Country Badges */}

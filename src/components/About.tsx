@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Heart, Award, ArrowUpRight, Compass, ShieldCheck } from "lucide-react";
+import { GraduationCap, Heart, Award, Compass, ShieldCheck } from "lucide-react";
 
 const strengths = [
   {
@@ -56,11 +56,11 @@ export default function About() {
             </h3>
             
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-              I believe that science shouldn't just be about memorizing chemical equations or anatomical terms—it's about understanding how life works. My tutoring approach revolves around building **strong core concepts** and helping students connect classroom curriculum to real-life applications.
+              I believe that science shouldn&apos;t just be about memorizing chemical equations or anatomical terms—it&apos;s about understanding how life works. My tutoring approach revolves around building **strong core concepts** and helping students connect classroom curriculum to real-life applications.
             </p>
 
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-              Whether studying the intricate molecular pathways of Biotechnology, cellular Biology, or chemical kinetics, I encourage students to ask "why" and think critically. My goal is to foster independent problem-solving skills so that students enter their exams with absolute confidence.
+              Whether studying the intricate molecular pathways of Biotechnology, cellular Biology, or chemical kinetics, I encourage students to ask &quot;why&quot; and think critically. My goal is to foster independent problem-solving skills so that students enter their exams with absolute confidence.
             </p>
 
             <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 border border-slate-100 dark:border-slate-800">

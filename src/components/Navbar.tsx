@@ -16,7 +16,7 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
+  useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

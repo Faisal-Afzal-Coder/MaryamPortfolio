@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 
@@ -13,15 +14,15 @@ const reviewImages = Array.from({ length: 12 }, (_, i) => ({
 export default function SuccessGallery() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (selectedId === null) return;
     setSelectedId(selectedId === reviewImages.length ? 1 : selectedId + 1);
-  };
+  }, [selectedId]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (selectedId === null) return;
     setSelectedId(selectedId === 1 ? reviewImages.length : selectedId - 1);
-  };
+  }, [selectedId]);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function SuccessGallery() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedId]);
+  }, [handleNext, handlePrev, selectedId]);
 
   const selectedImage = selectedId !== null ? reviewImages.find((img) => img.id === selectedId) : null;
 
@@ -71,9 +72,11 @@ export default function SuccessGallery() {
               onClick={() => setSelectedId(img.id)}
               className="break-inside-avoid mb-6 relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-card-bg/60 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer"
             >
-              <img
+              <Image
                 src={img.src}
                 alt={img.alt}
+                width={800}
+                height={1200}
                 loading="lazy"
                 className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
@@ -136,16 +139,22 @@ export default function SuccessGallery() {
               className="relative max-w-full max-h-[85vh] flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <motion.img
+              <motion.div
                 key={selectedImage.id}
                 initial={{ scale: 0.95, y: 10 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 10 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                className="max-w-[90vw] max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/10"
-              />
+                className="max-w-[90vw] max-h-[80vh]"
+              >
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  width={1200}
+                  height={1600}
+                  className="max-w-[90vw] max-h-[80vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                />
+              </motion.div>
               
               {/* Counter / Label */}
               <div className="mt-4 text-sm font-semibold text-slate-400 select-none">

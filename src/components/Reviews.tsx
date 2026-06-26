@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Send, User, BookOpen, ThumbsUp } from "lucide-react";
 
@@ -17,7 +17,19 @@ interface Review {
 const initialReviews: Review[] = [];
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviews, setReviews] = useState<Review[]>(() => {
+    if (typeof window === "undefined") return initialReviews;
+
+    const savedReviews = window.localStorage.getItem("maryam_tutor_reviews");
+    if (!savedReviews) return initialReviews;
+
+    try {
+      const parsed = JSON.parse(savedReviews);
+      return Array.isArray(parsed) ? parsed : initialReviews;
+    } catch {
+      return initialReviews;
+    }
+  });
   const [name, setName] = useState("");
   const [subjectClass, setSubjectClass] = useState("");
   const [rating, setRating] = useState(5);
@@ -25,21 +37,6 @@ export default function Reviews() {
   const [comment, setComment] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
-  // Load reviews from localStorage on mount
-  useEffect(() => {
-    const savedReviews = localStorage.getItem("maryam_tutor_reviews");
-    if (savedReviews) {
-      try {
-        const parsed = JSON.parse(savedReviews);
-        setReviews([...parsed, ...initialReviews]);
-      } catch (e) {
-        setReviews(initialReviews);
-      }
-    } else {
-      setReviews(initialReviews);
-    }
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -164,7 +161,7 @@ export default function Reviews() {
                       </div>
                       
                       <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed italic">
-                        "{review.comment}"
+                        &quot;{review.comment}&quot;
                       </p>
                       
                       <div className="text-[10px] text-slate-400 text-right mt-3 font-semibold">
