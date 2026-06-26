@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   publisher: "Maryam Afzal",
   applicationName: "Maryam Afzal Portfolio",
   category: "education",
+  verification: {
+    google: "3fnm-6ed3l_9A43XxsFFIqlrLxcfG-rbBtcsA8PPFe8",
+  },
   alternates: {
     canonical: "/",
     languages: {
