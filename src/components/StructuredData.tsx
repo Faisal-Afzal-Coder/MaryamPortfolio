@@ -3,10 +3,10 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://maryamportfolio1234.vercel.app/#person",
+      "@id": "https://maryam-portfolio-uawd.vercel.app/#person",
       "name": "Maryam Afzal",
       "jobTitle": "Online Biology & Chemistry Tutor",
-      "url": "https://maryamportfolio1234.vercel.app",
+      "url": "https://maryam-portfolio-uawd.vercel.app",
       "email": "mailto:mmaryamafzal490@gmail.com",
       "telephone": "+923177390123",
       "description": "Maryam Afzal is a dedicated online tutor helping students worldwide master Biology and Chemistry with clear, concept-based teaching.",
@@ -33,12 +33,12 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://maryamportfolio1234.vercel.app/#website",
-      "url": "https://maryamportfolio1234.vercel.app",
+      "@id": "https://maryam-portfolio-uawd.vercel.app/#website",
+      "url": "https://maryam-portfolio-uawd.vercel.app",
       "name": "Maryam Afzal Portfolio",
       "description": "Personal portfolio website for Maryam Afzal, featuring tutoring services, success stories, and contact information.",
       "publisher": {
-        "@id": "https://maryamportfolio1234.vercel.app/#person"
+        "@id": "https://maryam-portfolio-uawd.vercel.app/#person"
       },
       "inLanguage": "en-US"
     }

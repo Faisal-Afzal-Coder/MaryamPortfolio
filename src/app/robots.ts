@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://maryamportfolio1234.vercel.app/sitemap.xml",
+    sitemap: "https://maryam-portfolio-uawd.vercel.app/",
   };
 }

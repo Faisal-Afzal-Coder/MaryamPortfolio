@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://maryamportfolio1234.vercel.app"),
+  metadataBase: new URL("https://maryam-portfolio-uawd.vercel.app/"),
   title: {
     default: "Maryam Afzal | Online Biology & Chemistry Tutor",
     template: "%s | Maryam Afzal",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "UVAS Pakistan",
     "Interactive Science Learning",
   ],
-  authors: [{ name: "Maryam Afzal", url: "https://maryamportfolio1234.vercel.app" }],
+  authors: [{ name: "Maryam Afzal", url: "https://maryam-portfolio-uawd.vercel.app" }],
   creator: "Maryam Afzal",
   publisher: "Maryam Afzal",
   applicationName: "Maryam Afzal Portfolio",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://maryamportfolio1234.vercel.app",
+    url: "https://maryam-portfolio-uawd.vercel.app",
     siteName: "Maryam Afzal Portfolio",
     title: "Maryam Afzal | Online Biology & Chemistry Tutor",
     description:
